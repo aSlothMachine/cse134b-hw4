@@ -1,0 +1,289 @@
+:root {
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  --text-primary: #312F2F;
+  --text-secondary: rgba(0, 136, 169, 1);
+  --text-tertiary: #FE621D;
+  --bg-body: #fff;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  text-align: center;
+  padding: 380px;
+
+  background-image: url("../images/img-header-compressed.webp"); /* Source (free to use): https://unsplash.com/photos/npxXWgQ33ZQ */
+  background-size: cover;
+}
+
+body {
+  color: var(--text-primary);
+  /* background-color: var(--text-secondary); */
+  display: flex;
+  flex-direction: column;
+
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+h1 {
+  font-size: 2.5rem;
+  background-color: var(--bg-body);
+}
+
+h2 {
+  color: var(--text-secondary);
+  font-size: 5rem;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+/* Animations */
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animate {
+
+  0% {
+    content: "a computer science student.";
+  }
+
+  50% {
+    content: "a first generation student.";
+  }
+
+  75% {
+    content: "an asipiring software engineer.";
+  }
+}
+
+#my-name {
+  color: var(--text-secondary);
+}
+
+#change:after {
+  content: "a computer science student.";
+  animation: animate linear infinite 10s;
+  padding-left: 10px;
+
+}
+
+/* Nav Bar CSS*/
+
+.heading li,
+a,
+button {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.about-text span {
+  color: var(--text-tertiary);
+}
+
+.heading {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--bg-body);
+  background-position: center;
+}
+
+.logo {
+  cursor: pointer;
+  order: 3;
+  margin-left: auto;
+  width: 200px;
+  height: auto;
+}
+
+nav {
+  order: 1;
+}
+
+.nav_links {
+  list-style: none;
+}
+
+.nav_links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav_links li:nth-child(1) {
+  padding: 0 20px 0 0;
+}
+
+.nav_links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover {
+  color: #0088a9;
+}
+
+.order {
+  order: 2;
+}
+
+button {
+  margin-left: 20px;
+  padding: 9px 25px;
+  background-color: var(--text-secondary);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: var(--text-secondary);
+}
+
+
+#about, #projects, #coursework, #skills, #contact {
+  width: 100%;
+  padding: 42px;
+  background-color: var(--bg-body)
+}
+
+.about-text, .projects-text, .coursework-text, .skills-text, .contacts-text {
+  width: 550px;
+}
+
+/* About section */
+
+.main {
+  width: 1130px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.about-text p {
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  line-height: 28px;
+  font-size: 1.125rem;
+  margin-bottom: 45px;
+}
+
+#about img {
+  height: auto;
+  width: 45vh;
+  padding: 30px;
+  transform: none;
+}
+
+/* Projects Section */
+
+.project-main {
+  /* This is to move text!! */
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.projects-text ul {
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  line-height: 28px;
+  font-size: 1.125rem;
+  margin-bottom: 45px;
+}
+
+/* Coursework Section */
+
+.coursework-main {
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.coursework-text p {
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  line-height: 28px;
+  font-size: 1.125rem;
+  margin-bottom: 45px;
+}
+
+/* Skills Section */
+
+.skills-main {
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.skills-text li,
+b {
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  line-height: 28px;
+  font-size: 1.125rem;
+  margin-bottom: 45px;
+}
+
+/* Contacts Section */
+
+#contact img {
+  height: auto;
+  width: 100px;
+  padding: 20px;
+}
+
+.contacts-main {
+  /* width: 1130px;
+  max-width: 100%; */
+  /* margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+  padding-bottom: 200px;
+}
+
+/*Don't forget to validate CSS and HTML*/
+/* backgorund img suggests to make something personal instead of generic */
+/* fix empty space by shifting some text to the right (stretch) */
+/* for homework specs try to meet at least one but dont need all */
+/* em for child div inside a parent div but try REM , especially for font sizes*/
+/* Try to change to relative units (REM preferred for root or em) but em has few cases relative to parent. Few places need absolute. */
