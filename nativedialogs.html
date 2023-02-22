@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Part 1: Simple Dialogs</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon">
+    
+    <script src="DOMPurify-3.0.0/dist/purify.min.js"></script>
+    
 </head>
 
 <body>
@@ -14,40 +17,65 @@
     <br>
     <br>
     <button type="button" id="confirm">Confirm</button>
-    <form oninput="res.value=parseInt(a.value)+parseInt(b.value);">  
-        <label>Enter First Value.</label><br>  
-        <input type="number" name="a" value=""/><br>  
-        +<br/>  
-        <label>Enter First Value.</label><br>   
-        <input type="number" name="b" value=""><br>  
-        =<br>  
-        Output is:<output name="res"></output>  
-    </form>  
-
     <br>
     <br>
-
     <button type="button" id="prompt">Prompt</button>
     <br>
     <br>
     <button type="button" id="safer">Safer Prompt</button>
+    <br>
+    <br>
+    <output id="output">Change me</output>  
+
 
     <script>
 
         // Alert Button
         const alertBtn = document.getElementById("alert");
         alertBtn.addEventListener("click", () => {
-            alert("This is the built-in alert.");
+            alert("Alert pressed!");
         }, false);
 
         // Confirm Button
         const confBtn = document.getElementById("confirm");
         confBtn.addEventListener("click", function () {
-            document.getElementByID("output").innerHTML = "The value returned by the confirm method is : (the value)";
+            const conf = confirm("Do you confirm this?");
+            if (conf)
+                document.querySelector("#output").innerHTML = `The value returned by the confirm method is : ${conf}`;
+            else {
+                document.querySelector("#output").innerHTML = `The value returned by the confirm method is : ${conf}`;
+            }
         });
 
+        // Prompt Button
+        const promptBtn = document.getElementById("prompt");
+        promptBtn.addEventListener("click", function () {
+            const yeah = prompt("What is your name?");
+            // console.log(yeah);
+            if (yeah == null || yeah == 0) {
+                document.querySelector("#output").innerHTML = "User didn't enter anything";
+            }
+            else {
+                document.querySelector("#output").innerHTML = yeah;
+            }
+        });
 
+        // Safer Prompt Button
+        const safeBtn = document.getElementById("safer");
+        safeBtn.addEventListener("click", function () {
+            const dirty = prompt("What is your name?");
+            
+            let clean = DOMPurify.sanitize(dirty);
+            // console.log(clean);
+            if (clean == null || clean.length == 0) {
+                document.querySelector("#output").innerHTML = "User didn't enter anything";
+            }
+            else {
+                document.querySelector("#output").innerHTML = clean;
+            }
+        });
     </script>
+
 </body>
 
 </html>
