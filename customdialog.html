@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Part 2: Custom Dialogs</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon">
-    
+
     <script src="DOMPurify-3.0.0/dist/purify.min.js"></script>
     <script type="module" src="scripts/customdialog.js"></script>
 
@@ -20,7 +20,7 @@
     <button type="button" id="confirm">Confirm</button>
     <button type="button" id="prompt">Prompt</button>
     <hr>
-    <output id="output"></output>  
+    <output id="output"></output>
 
     <!-- Alert -->
     <dialog id="alertDialog">
@@ -39,6 +39,14 @@
 
     <!-- Prompt -->
     <dialog id="promptDialog">
+        <label for="usertext">What is your name?</label>
+        <br>
+        <input type="text" id="usertext" name="usertext">   
+        <br>
+        <br>
+        <button type="button" id="cancel-prompt">Cancel</button>
+        <button type="button" id="ok-prompt">Ok</button>
+
 
     </dialog>
 
