@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Part 2: Custom Dialogs</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon">
+    <script src="DOMPurify-3.0.0/dist/purify.min.js"></script>
+    <script type="module" src="scripts/blog.js"></script>
+    <script type="module" src="scripts/blog-cancel-save.js"></script>
+</head>
+
+<body>
+    <h1>Part 3: Simple Crud</h1>
+
+    <!-- Add Button -->
+    <button id="add">Add post</button><br><br>
+    <output id="output"></output><br>
+
+    <!-- Add Button Opens up Dialog -->
+    <dialog id="addDialog">
+        <form id="userInput">
+            <label for="tital">Post Title:</label><br>
+            <input type="text" id="tital" name="tital"><br>
+
+            <label for="date">Post Date:</label><br>
+            <input type="date" id="date" name="date"><br>
+
+            <label for="summary">Post Summary:</label><br>
+            <textarea id="summary" name="summary" rows="4" cols="50" maxlength="200"></textarea><br>
+
+            <button type="button" id="cancel">Cancel</button>
+            <button type="button" id="save">Save</button>
+        </form>
+    </dialog>
+</body>
+
+</html>
