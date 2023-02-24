@@ -18,11 +18,18 @@ function main() {
     }, false);
 
     // display all posts in local storage on load.
-    displayPosts();
+    let localPosts = JSON.parse(localStorage.getItem('postList') || "[]");
+    let output;
+
+    for (const post of localPosts) {
+        output = document.querySelector('#output');
+        output.insertAdjacentHTML('afterbegin', postHTMLMarkup(post));
+    }
 }
 
 // user clicks cancel button within dialog.
 function cancel(event) {
+
     // close and clear dialog box.
     document.getElementById("addDialog").close();
     document.querySelector('#tital').value = "";
@@ -37,15 +44,15 @@ function save(event) {
     let postList = JSON.parse(localStorage.getItem('postList') || "[]");
 
     let blogInfo = {
-        // may need an ID field to track it when editing or deleting. 
+        uniqueid: Math.random().toString(36).substring(2, 9), 
         title: document.querySelector('#tital').value,
         date: document.querySelector('#date').value,
         summary: document.querySelector('#summary').value
     };
-
+    
     postList.push(blogInfo);
     localStorage.setItem("postList", JSON.stringify(postList));
-
+    
     // close and clear dialog box.
     document.getElementById("addDialog").close();
     document.querySelector('#tital').value = "";
@@ -57,30 +64,17 @@ function save(event) {
     output.insertAdjacentHTML('afterbegin', postHTMLMarkup(blogInfo));
 }
 
-// show all blog posts in local storage.
-function displayPosts() {
-    let localPosts = JSON.parse(localStorage.getItem('postList') || "[]");
-    let output;
-
-    for (const post of localPosts) {
-        output = document.querySelector('#output');
-        output.insertAdjacentHTML('afterbegin', postHTMLMarkup(post));
-    }
-}
-
 // format blog posts here.
 function postHTMLMarkup(post) {
-
-    let postMarkup = `
-            <h2>${post.title}</h2>
-            <p><b>${post.date}</b></p>
-            <p>${post.summary}</p>
+ 
+    let postMarkup = `<article id=\"${post.uniqueid}\">
+            <h2 id="title">${post.title}</h2>
+            <p id="date">${post.date}</p>
+            <p id="summary">${post.summary}</p>
             <button onclick=\"postEdit(this)\">Edit</button>
-            <button onclick=\"postDelete(this)\">Delete</button>`;
-        
+            <button onclick=\"postDelete(this)\">Delete</button></article>`;
+
     return postMarkup;
 }
 
 window.addEventListener('DOMContentLoaded', main);
-
-// make the postEdit and postDelte functions. Possibly move these into a new JS file.
