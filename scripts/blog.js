@@ -6,10 +6,7 @@ function main() {
     // add button event listener.
     const addBtn = document.getElementById("add");
     addBtn.addEventListener("click", () => {
-
-        // reveal dialog box.
         document.getElementById("addDialog").show();
-
     }, false);
 
     // user clicks cancel button 
@@ -32,6 +29,21 @@ function main() {
 
 // user clicks cancel button within dialog.
 function cancel(event) {
+
+    // check corner case if user cancels editing post.
+    let element = document.getElementById("save-modify");
+    let hidden = element.getAttribute("hidden");
+
+    if (!hidden) {
+        element.setAttribute("hidden", "hidden");
+    }
+
+    element = document.getElementById("save");
+    hidden = element.getAttribute("hidden");
+
+    if (hidden) {
+        element.removeAttribute("hidden");
+    }
 
     // close and clear dialog box.
     document.getElementById("addDialog").close();
