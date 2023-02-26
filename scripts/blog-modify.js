@@ -1,3 +1,4 @@
+
 // user clicks the delete button.
 function postDelete(event) {
 
@@ -30,6 +31,18 @@ function postDelete(event) {
 // user clicks the edit button. ???????????????????
 function postEdit(event) {
 
+    // reveal dialog box.
+    document.getElementById("addDialog").show();
+
+    // load existing input values for blog editing.
+    document.querySelector('#tital').value = event.parentElement.querySelector('#title').innerHTML;
+    document.querySelector('#date').value = event.parentElement.querySelector('#date').innerHTML;
+    document.querySelector('#summary').value = event.parentElement.querySelector('#summary').innerHTML;
+
+    // // user clicks save button. (change function)//// change below?? save button issue
+    const saveBtn = document.getElementById("save");
+    saveBtn.addEventListener("click", modifysave);
+
     let postList = JSON.parse(localStorage.getItem('postList') || "[]");
 
     for (const post of postList) {
@@ -49,3 +62,8 @@ function postEdit(event) {
     // restore into string again.
     localStorage.setItem("postList", JSON.stringify(postList));
 }
+
+function modifysave(event) {
+    console.log("hi");
+}
+

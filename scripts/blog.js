@@ -10,14 +10,15 @@ function main() {
         // reveal dialog box.
         document.getElementById("addDialog").show();
 
-        // user clicks cancel button 
-        const cancelBtn = document.getElementById("cancel");
-        cancelBtn.addEventListener("click", cancel);
-
-        // user clicks save button.
-        const saveBtn = document.getElementById("save");
-        saveBtn.addEventListener("click", save);
     }, false);
+
+    // user clicks cancel button 
+    const cancelBtn = document.getElementById("cancel");
+    cancelBtn.addEventListener("click", cancel);
+
+    // user clicks save button.
+    const saveBtn = document.getElementById("save");
+    saveBtn.addEventListener("click", save);
 
     // display all posts in local storage on load.
     let localPosts = JSON.parse(localStorage.getItem('postList') || "[]");
@@ -47,15 +48,15 @@ function save(event) {
 
     // create an object literal to store in local storage.
     let blogInfo = {
-        uniqueid: Math.random().toString(36).substring(2, 9), 
+        uniqueid: Math.random().toString(36).substring(2, 9),
         title: document.querySelector('#tital').value,
         date: document.querySelector('#date').value,
         summary: document.querySelector('#summary').value
     };
-    
+
     postList.push(blogInfo);
     localStorage.setItem("postList", JSON.stringify(postList));
-    
+
     // close and clear dialog box.
     document.getElementById("addDialog").close();
     document.querySelector('#tital').value = "";
@@ -69,7 +70,7 @@ function save(event) {
 
 // format blog posts here.
 function postHTMLMarkup(post) {
- 
+
     let postMarkup = `<article id=\"${post.uniqueid}\">
             <h2 id="title">${post.title}</h2>
             <p id="date">${post.date}</p>
