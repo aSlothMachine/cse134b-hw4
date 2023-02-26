@@ -1,4 +1,6 @@
 // initiate here.
+window.addEventListener('DOMContentLoaded', main);
+
 function main() {
 
     // add button event listener.
@@ -40,9 +42,10 @@ function cancel(event) {
 // user clicks save button within dialog.
 function save(event) {
 
-    // store blog post.
+    // access local storage.
     let postList = JSON.parse(localStorage.getItem('postList') || "[]");
 
+    // create an object literal to store in local storage.
     let blogInfo = {
         uniqueid: Math.random().toString(36).substring(2, 9), 
         title: document.querySelector('#tital').value,
@@ -76,5 +79,3 @@ function postHTMLMarkup(post) {
 
     return postMarkup;
 }
-
-window.addEventListener('DOMContentLoaded', main);
