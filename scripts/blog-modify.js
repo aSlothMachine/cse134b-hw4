@@ -28,7 +28,7 @@ function postDelete(event) {
 }
 
 // user clicks the edit button.
-function postEdit(event) {
+function postEdit(event1) {
 
     // reveal dialog box.
     document.getElementById("addDialog").show();
@@ -39,9 +39,9 @@ function postEdit(event) {
 
     // load existing input values for blog editing.
 
-    document.querySelector('#tital').value = event.parentElement.querySelector('#title').innerHTML;
-    document.querySelector('#date').value = event.parentElement.querySelector('#date').innerHTML;
-    document.querySelector('#summary').value = event.parentElement.querySelector('#summary').innerHTML;
+    document.querySelector('#tital').value = event1.parentElement.querySelector('#title').innerHTML;
+    document.querySelector('#date').value = event1.parentElement.querySelector('#date').innerHTML;
+    document.querySelector('#summary').value = event1.parentElement.querySelector('#summary').innerHTML;
 
 
     // edit below
@@ -80,33 +80,39 @@ function postEdit(event) {
 
         // these change the HTML webpage live, but bugs with changing other blogs when not supposed to.
 
-        // event.parentElement.querySelector('#title').innerHTML = document.querySelector('#tital').value;
-        // event.parentElement.querySelector('#date').innerHTML = document.querySelector('#date').value;
-        // event.parentElement.querySelector('#summary').innerHTML = document.querySelector('#summary').value;
+        event1.parentElement.querySelector('#title').innerHTML = document.querySelector('#tital').value;
+        event1.parentElement.querySelector('#date').innerHTML = document.querySelector('#date').value;
+        event1.parentElement.querySelector('#summary').innerHTML = document.querySelector('#summary').value;
+
+        // this permanently changes the files 
 
         for (const post of postList) {
-
+            console.log("event.parentElement.id", event1.parentElement.id);
+            console.log("post.uniqueid", post.uniqueid);
             // compare uniqueIDs with current post selected and post stored in local storage.
-            if (event.parentElement.id === post.uniqueid) {
+            if (event1.parentElement.id === post.uniqueid) {
                 post.title= document.querySelector('#tital').value;
                 post.date = document.querySelector('#date').value;
                 post.summary = document.querySelector('#summary').value;
-
+                console.log("post.title", post.title);
+                console.log("document.querySelector('#tital').value", document.querySelector('#tital').value);
                 // break once found.
                 break;
             }
         }
+
+        // console.log("--------------");
 
         localStorage.setItem("postList", JSON.stringify(postList));
 
         // hide and reveal appropriate buttons.
         document.getElementById("save-modify").setAttribute("hidden", "hidden");
         document.getElementById("save").removeAttribute("hidden");
-
+        console.log("got here");
         // close and clear dialog box.
         document.getElementById("addDialog").close();
-        document.querySelector('#tital').value = "";
-        document.querySelector('#date').value = "";
-        document.querySelector('#summary').value = "";
-    }, false);
+        // document.querySelector('#tital').value = "";
+        // document.querySelector('#date').value = "";
+        // document.querySelector('#summary').value = "";
+    }, {once : true});
 }

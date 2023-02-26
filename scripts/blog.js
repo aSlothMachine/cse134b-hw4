@@ -1,5 +1,5 @@
 // initiate here.
-window.addEventListener('DOMContentLoaded', main);
+
 
 function main() {
 
@@ -92,3 +92,5 @@ function postHTMLMarkup(post) {
 
     return postMarkup;
 }
+
+window.addEventListener('DOMContentLoaded', main);
