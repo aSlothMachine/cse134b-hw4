@@ -79,5 +79,5 @@ function postEdit(event1) {
         document.querySelector('#summary').value = "";
         document.getElementById("addDialog").close();
 
-    }, { once: true });
+    }, { once: true }); // ensure event listener is fired once.
 }

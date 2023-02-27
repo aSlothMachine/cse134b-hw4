@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Part 3: Simple Crud</title>
+    <title>Part 4: Style My Crud</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="styles/stylecrud.css">
     <script src="DOMPurify-3.0.0/dist/purify.min.js"></script>
-    <script type="module" src="scripts/blog.js"></script>
+    <script type="module" src="scripts/styledblog.js"></script>
     <script src="scripts/blog-modify.js"></script>
+    <script src="https://kit.fontawesome.com/e0606b6edb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>Part 3: Simple Crud</h1>
+    <h1>Part 4: Style My Crud</h1>
 
     <!-- Add Button -->
-    <button id="add">Add post</button><br><br>
+    <button id="add"><i class="fa-solid fa-plus"></i></button>
 
     <!-- Add Button Opens up Dialog -->
     <dialog id="addDialog">
@@ -30,9 +32,9 @@
             <label for="summary">Post Summary:</label><br>
             <textarea id="summary" name="summary" rows="4" cols="50" maxlength="200"></textarea><br>
 
-            <button type="button" id="cancel">Cancel</button>
-            <button type="button" id="save">Save</button>
-            <button type="button" id="save-modify" hidden="hidden">Save</button>
+            <button type="button" id="cancel"><i class="fa-solid fa-xmark"></i></button>
+            <button type="button" id="save"><i class="fa-solid fa-floppy-disk"></i></button>
+            <button type="button" id="save-modify" hidden="hidden"><i class="fa-solid fa-floppy-disk"></i></i></button>
         </form>
     </dialog>
     <output id="output"></output><br>
