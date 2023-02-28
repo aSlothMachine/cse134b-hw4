@@ -1,12 +1,19 @@
 // initiate here.
 
-
 function main() {
 
     // add button event listener.
     const addBtn = document.getElementById("add");
     addBtn.addEventListener("click", () => {
-        document.getElementById("addDialog").show();
+
+        // immediately clear any prior form values.
+        document.querySelector('#tital').value = "";
+        document.querySelector('#date').value = "";
+        document.querySelector('#summary').value = "";
+
+        // open dialog box. 
+        document.getElementById("addDialog").showModal();
+
     }, false);
 
     // user clicks cancel button 

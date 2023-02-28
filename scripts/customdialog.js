@@ -4,7 +4,7 @@ const alertBtn = document.getElementById("alert");
 
 alertBtn.addEventListener("click", () => {
 
-    document.getElementById("alertDialog").show();
+    document.getElementById("alertDialog").showModal();
     document.querySelector("#output").innerHTML = "";   // remove any previous output.
 
     // user clicks okay button.
@@ -21,7 +21,7 @@ const confBtn = document.getElementById("confirm");
 
 confBtn.addEventListener("click", function () {
 
-    document.getElementById("confirmDialog").show();
+    document.getElementById("confirmDialog").showModal();
     document.querySelector("#output").innerHTML = "";   // remove any previous output.
 
     // user clicks cancel button.
@@ -46,7 +46,7 @@ const safeBtn = document.getElementById("prompt");
 
 safeBtn.addEventListener("click", function () {
 
-    document.getElementById("promptDialog").show();
+    document.getElementById("promptDialog").showModal();
     document.querySelector("#output").innerHTML = "";       // remove any previous output.
     document.querySelector('#usertext').value = "";         // reset input value.
 

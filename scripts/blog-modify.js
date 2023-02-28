@@ -31,7 +31,7 @@ function postDelete(event) {
 function postEdit(event1) {
 
     // reveal dialog box.
-    document.getElementById("addDialog").show();
+    document.getElementById("addDialog").showModal();
 
     // reveal edit dialog's hidden save button and hide add dialog's save button.
     document.getElementById("save-modify").removeAttribute("hidden");
@@ -73,11 +73,11 @@ function postEdit(event1) {
         document.getElementById("save-modify").setAttribute("hidden", "hidden");
         document.getElementById("save").removeAttribute("hidden");
 
-        // close and clear dialog box.
+        // Only close dialog box; not clear.
+        document.getElementById("addDialog").close();
         document.querySelector('#tital').value = "";
         document.querySelector('#date').value = "";
         document.querySelector('#summary').value = "";
-        document.getElementById("addDialog").close();
 
     }, { once: true }); // ensure event listener is fired once.
 }
