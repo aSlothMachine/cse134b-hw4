@@ -2,49 +2,11 @@ window.addEventListener('DOMContentLoaded', main);  // initiate here.
 var posted;                                         // global variable to grab edited post information.
 
 function main() {
-    // save button for editing blog posts.
-    const editSaveBtn = document.getElementById("save-modify");
-    editSaveBtn.addEventListener("click", () => {
-
-        let postList = JSON.parse(localStorage.getItem('postList') || "[]");
-
-        // update the page live.
-        console.log("in save function: ", document.querySelector('#tital').value); // running twice???
-        window.posted.parentElement.querySelector('#title').innerHTML = document.querySelector('#tital').value;
-        window.posted.parentElement.querySelector('#date').innerHTML = document.querySelector('#date').value;
-        window.posted.parentElement.querySelector('#summary').innerHTML = document.querySelector('#summary').value;
-
-        // change the post's fields to maintain update.
-        for (const post of postList) {
-
-            // compare uniqueIDs with current post selected and post stored in local storage.
-            if (window.posted.parentElement.id === post.uniqueid) {
-                post.title = document.querySelector('#tital').value;
-                post.date = document.querySelector('#date').value;
-                post.summary = document.querySelector('#summary').value;
-
-                // break once found.
-                break;
-            }
-        }
-
-        localStorage.setItem("postList", JSON.stringify(postList));
-
-        // hide edit dialog's save button and reveal add dialog's save button.
-        document.getElementById("save-modify").setAttribute("hidden", "hidden");
-        document.getElementById("save").removeAttribute("hidden");
-
-        // Only close dialog box; not clear.
-        document.getElementById("addDialog").close();
-        document.querySelector('#tital').value = "";
-        document.querySelector('#date').value = "";
-        document.querySelector('#summary').value = "";
-
-    }, ); // ensure event listener is fired once { once: true }.
 
     // add button event listener.
     const addBtn = document.getElementById("add");
     addBtn.addEventListener("click", () => {
+
         // open dialog box. 
         document.getElementById("addDialog").showModal();
 
@@ -54,9 +16,13 @@ function main() {
     const cancelBtn = document.getElementById("cancel");
     cancelBtn.addEventListener("click", cancel);
 
-    // user clicks save button.
-    const saveBtn = document.getElementById("save");
-    saveBtn.addEventListener("click", save);
+    // user clicks save button when adding post.
+    const saveBtnAdd = document.getElementById("save");
+    saveBtnAdd.addEventListener("click", save);
+
+    // user clicks save button when editing post.
+    const saveBtnEdit = document.getElementById("save-modify");
+    saveBtnEdit.addEventListener("click", saveEdit);
 
     // display all posts in local storage on load.
     let localPosts = JSON.parse(localStorage.getItem('postList') || "[]");
@@ -119,6 +85,42 @@ function save(event) {
     // show new post here at top of page. 
     let output = document.querySelector('#output');
     output.insertAdjacentHTML('afterbegin', postHTMLMarkup(blogInfo));
+}
+
+function saveEdit(event) {
+
+    let postList = JSON.parse(localStorage.getItem('postList') || "[]");
+
+    // update the page live.
+    window.posted.parentElement.querySelector('#title').innerHTML = document.querySelector('#tital').value;
+    window.posted.parentElement.querySelector('#date').innerHTML = document.querySelector('#date').value;
+    window.posted.parentElement.querySelector('#summary').innerHTML = document.querySelector('#summary').value;
+
+    // change the post's fields to maintain update.
+    for (const post of postList) {
+
+        // compare uniqueIDs with current post selected and post stored in local storage.
+        if (window.posted.parentElement.id === post.uniqueid) {
+            post.title = document.querySelector('#tital').value;
+            post.date = document.querySelector('#date').value;
+            post.summary = document.querySelector('#summary').value;
+
+            // break once found.
+            break;
+        }
+    }
+
+    localStorage.setItem("postList", JSON.stringify(postList));
+
+    // hide edit dialog's save button and reveal add dialog's save button.
+    document.getElementById("save-modify").setAttribute("hidden", "hidden");
+    document.getElementById("save").removeAttribute("hidden");
+
+    // Only close dialog box; not clear.
+    document.getElementById("addDialog").close();
+    document.querySelector('#tital').value = "";
+    document.querySelector('#date').value = "";
+    document.querySelector('#summary').value = "";
 }
 
 // format blog posts here.

@@ -38,7 +38,6 @@ function postEdit(event) {
     document.getElementById("save").setAttribute("hidden", "hidden");
 
     // load existing input values for blog editing into form.
-    console.log("outside save function", document.querySelector('#tital').value = event.parentElement.querySelector('#title').innerHTML);
     document.querySelector('#tital').value = event.parentElement.querySelector('#title').innerHTML;
     document.querySelector('#date').value = event.parentElement.querySelector('#date').innerHTML;
     document.querySelector('#summary').value = event.parentElement.querySelector('#summary').innerHTML;
