@@ -38,6 +38,7 @@ function postEdit(event1) {
     document.getElementById("save").setAttribute("hidden", "hidden");
 
     // load existing input values for blog editing into form.
+    console.log("outside save function", document.querySelector('#tital').value = event1.parentElement.querySelector('#title').innerHTML);
     document.querySelector('#tital').value = event1.parentElement.querySelector('#title').innerHTML;
     document.querySelector('#date').value = event1.parentElement.querySelector('#date').innerHTML;
     document.querySelector('#summary').value = event1.parentElement.querySelector('#summary').innerHTML;
@@ -49,6 +50,7 @@ function postEdit(event1) {
         let postList = JSON.parse(localStorage.getItem('postList') || "[]");
 
         // update the page live.
+        console.log("in save function: ", document.querySelector('#tital').value); // running twice???
         event1.parentElement.querySelector('#title').innerHTML = document.querySelector('#tital').value;
         event1.parentElement.querySelector('#date').innerHTML = document.querySelector('#date').value;
         event1.parentElement.querySelector('#summary').innerHTML = document.querySelector('#summary').value;
