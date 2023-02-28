@@ -25,7 +25,7 @@ body {
 header {
     text-align: center;
     padding: 200px;
-    background-image: url("../images/blog-bg.jpg");
+    background-image: url("../images/blog-bg.jpg"); /* source: https://unsplash.com/photos/1_CMoFsPfso */
     background-size: cover;
 }
 

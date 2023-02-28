@@ -7,25 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Part 1: Simple Dialogs</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon">
-    
     <script src="DOMPurify-3.0.0/dist/purify.min.js"></script>
-    
 </head>
 
 <body>
+    <header><h1>Part 1: Simple Dialogs</h1></header>
     <button type="button" id="alert">Alert</button>
-    <br>
-    <br>
     <button type="button" id="confirm">Confirm</button>
-    <br>
-    <br>
     <button type="button" id="prompt">Prompt</button>
-    <br>
-    <br>
     <button type="button" id="safer">Safer Prompt</button>
-    <br>
-    <br>
-    <output id="output">Change me</output>  
+    <hr>
+    <output id="output"></output>
 
 
     <script>
@@ -33,38 +25,52 @@
         // Alert Button
         const alertBtn = document.getElementById("alert");
         alertBtn.addEventListener("click", () => {
+
+            document.querySelector("#output").innerHTML = "";
             alert("Alert pressed!");
+
         }, false);
 
         // Confirm Button
         const confBtn = document.getElementById("confirm");
         confBtn.addEventListener("click", function () {
+
+            document.querySelector("#output").innerHTML = "";
+
             const conf = confirm("Do you confirm this?");
             if (conf)
                 document.querySelector("#output").innerHTML = `The value returned by the confirm method is : ${conf}`;
             else {
                 document.querySelector("#output").innerHTML = `The value returned by the confirm method is : ${conf}`;
             }
+
         });
 
         // Prompt Button
         const promptBtn = document.getElementById("prompt");
         promptBtn.addEventListener("click", function () {
+
+            document.querySelector("#output").innerHTML = "";
+
             const yeah = prompt("What is your name?");
-            // console.log(yeah);
+
             if (yeah == null || yeah == 0) {
                 document.querySelector("#output").innerHTML = "User didn't enter anything";
             }
             else {
                 document.querySelector("#output").innerHTML = yeah;
             }
+
         });
 
         // Safer Prompt Button
         const safeBtn = document.getElementById("safer");
         safeBtn.addEventListener("click", function () {
+
+            document.querySelector("#output").innerHTML = "";
+
             const dirty = prompt("What is your name?");
-            
+
             let clean = DOMPurify.sanitize(dirty);
             // console.log(clean);
             if (clean == null || clean.length == 0) {
