@@ -71,7 +71,8 @@ dialog {
     max-width: 400px;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -81,6 +82,18 @@ input, textarea {
     box-sizing: border-box;
 }
 
+button {
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: var(--text-secondary);
+}
+
 textarea {
     resize: none;
-  }
+}
