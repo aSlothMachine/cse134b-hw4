@@ -11,14 +11,15 @@
 </head>
 
 <body>
-    <header><h1>Part 1: Simple Dialogs</h1></header>
+    <header>
+        <h1>Part 1: Simple Dialogs</h1>
+    </header>
     <button type="button" id="alert">Alert</button>
     <button type="button" id="confirm">Confirm</button>
     <button type="button" id="prompt">Prompt</button>
     <button type="button" id="safer">Safer Prompt</button>
     <hr>
     <output id="output"></output>
-
 
     <script>
 
@@ -27,31 +28,40 @@
         alertBtn.addEventListener("click", () => {
 
             document.querySelector("#output").innerHTML = "";
-            alert("Alert pressed!");
+            setTimeout(waitAdd, 100);
 
         }, false);
+
+        function waitAdd() {
+            alert("Alert pressed!");
+        }
 
         // Confirm Button
         const confBtn = document.getElementById("confirm");
         confBtn.addEventListener("click", function () {
 
             document.querySelector("#output").innerHTML = "";
+            setTimeout(waitConfirm, 100);
+        });
 
+        function waitConfirm() {
             const conf = confirm("Do you confirm this?");
             if (conf)
                 document.querySelector("#output").innerHTML = `The value returned by the confirm method is : ${conf}`;
             else {
                 document.querySelector("#output").innerHTML = `The value returned by the confirm method is : ${conf}`;
             }
-
-        });
+        }
 
         // Prompt Button
         const promptBtn = document.getElementById("prompt");
         promptBtn.addEventListener("click", function () {
 
             document.querySelector("#output").innerHTML = "";
+            setTimeout(waitPrompt, 100);
+        });
 
+        function waitPrompt() {
             const yeah = prompt("What is your name?");
 
             if (yeah == null || yeah == 0) {
@@ -60,26 +70,30 @@
             else {
                 document.querySelector("#output").innerHTML = yeah;
             }
-
-        });
+        }
 
         // Safer Prompt Button
         const safeBtn = document.getElementById("safer");
         safeBtn.addEventListener("click", function () {
 
             document.querySelector("#output").innerHTML = "";
+            setTimeout(waitSafePrompt, 100);
+        });
+
+        function waitSafePrompt() {
 
             const dirty = prompt("What is your name?");
 
             let clean = DOMPurify.sanitize(dirty);
-            // console.log(clean);
+
             if (clean == null || clean.length == 0) {
                 document.querySelector("#output").innerHTML = "User didn't enter anything";
             }
             else {
                 document.querySelector("#output").innerHTML = clean;
             }
-        });
+        }
+
     </script>
 
 </body>

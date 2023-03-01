@@ -1,5 +1,3 @@
-
-
 # Part 5: Site Changes and 3rd Party Script
 
 ## Portfolio Imrpovement:
