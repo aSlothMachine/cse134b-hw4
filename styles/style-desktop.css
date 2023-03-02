@@ -180,7 +180,7 @@ button:hover {
 #about, #projects, #coursework, #skills, #contact {
   width: 100%;
   padding: 42px;
-  background-color: var(--bg-body)
+  background-color: var(--bg-body);
 }
 
 .about-text, .projects-text, .coursework-text, .skills-text, .contacts-text {

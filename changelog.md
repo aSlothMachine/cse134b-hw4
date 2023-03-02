@@ -1,6 +1,8 @@
 # Part 5: Site Changes and 3rd Party Script
 
 ## Portfolio Imrpovement:
+I chose to implement a dark mode button that flips my color variables with one another. This helps maintain
+my color pallete, while achieving dark mode . . . (edit)
 
 ## 3rd Party JavaScript:
 
