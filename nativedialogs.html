@@ -28,7 +28,7 @@
         alertBtn.addEventListener("click", () => {
 
             document.querySelector("#output").innerHTML = "";
-            setTimeout(waitAdd, 100);
+            setTimeout(waitAdd, 0);
 
         }, false);
 
@@ -41,7 +41,7 @@
         confBtn.addEventListener("click", function () {
 
             document.querySelector("#output").innerHTML = "";
-            setTimeout(waitConfirm, 100);
+            setTimeout(waitConfirm, 0);
         });
 
         function waitConfirm() {
@@ -58,7 +58,7 @@
         promptBtn.addEventListener("click", function () {
 
             document.querySelector("#output").innerHTML = "";
-            setTimeout(waitPrompt, 100);
+            setTimeout(waitPrompt, 0);
         });
 
         function waitPrompt() {
@@ -77,7 +77,7 @@
         safeBtn.addEventListener("click", function () {
 
             document.querySelector("#output").innerHTML = "";
-            setTimeout(waitSafePrompt, 100);
+            setTimeout(waitSafePrompt, 0);
         });
 
         function waitSafePrompt() {
